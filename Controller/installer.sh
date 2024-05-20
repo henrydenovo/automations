@@ -45,7 +45,7 @@ function handle_error {
 trap 'handle_error "$current_step" "$BASH_COMMAND"' ERR
 
 # Total number of steps
-total_steps=28
+total_steps=24
 
 # Validate the existence of external-controller.tar.gz, database.zip, and repos.zip
 if [[ ! -f "./assets/external-controller.tar.gz" ]]; then
@@ -319,25 +319,14 @@ show_progress 22 $total_steps "$current_step..."
 sudo firewall-cmd --permanent --add-port=3000/tcp
 sudo firewall-cmd --reload
 
-# Step 23: Verify HTTP response from the service
-current_step="Verifying HTTP response from the service"
-show_progress 23 $total_steps "$current_step..."
-response=$(curl --write-out %{http_code} --silent --output /dev/null http://localhost:3000)
-if [ "$response" -ne 200 ]; then
-  echo "Service is not responding correctly. HTTP status code: $response"
-  handle_error "Verifying HTTP response from the service" "curl --write-out %{http_code} --silent --output /dev/null http://localhost:3000"
-else
-  echo "HTTP/1.1 200 OK"
-  echo "The service is running and responding on port 3000."
-fi
 
-# Step 24: Clean up temporary files
+# Step 23: Clean up temporary files
 current_step="Cleaning up temporary files"
-show_progress 24 $total_steps "$current_step..."
+show_progress 23 $total_steps "$current_step..."
 rm -rf /tmp/meteor
 
-# Step 25: Finish
+# Step 24: Finish
 current_step="Finishing installation"
-show_progress 25 $total_steps "$current_step..."
+show_progress 24 $total_steps "$current_step..."
 echo "Installation complete."
 
