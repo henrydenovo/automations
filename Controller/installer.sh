@@ -21,7 +21,6 @@ function cleanup {
   sudo userdel -r controller || true
   sudo yum remove -y mongodb-enterprise nginx certbot python3-certbot-nginx || true
   sudo rm -rf /etc/nginx/sites-available /etc/nginx/sites-enabled /etc/letsencrypt
-  sudo rm -rf /etc/Centos-Linux*
 }
 
 # Function to handle errors
