@@ -71,6 +71,9 @@ DOMAIN="${DOMAIN_NAME}.furtherreach.net"
 # Step 1: Ensure a valid repository is available and update packages
 current_step="Ensuring a valid repository and updating packages"
 show_progress 1 $total_steps "$current_step..."
+rm -rf /etc/yum.repos.d/CentOS-Linux-AppStream.repo
+rm -rf /etc/yum.repos.d/CentOS-Linux-BaseOS.repo
+
 if [[ ! -f /etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-8 ]]; then
   sudo curl -o /etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-8 https://dl.fedoraproject.org/pub/epel/RPM-GPG-KEY-EPEL-8
 fi
