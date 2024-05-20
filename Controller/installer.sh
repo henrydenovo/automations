@@ -309,7 +309,7 @@ fi
 current_step="Extracting the database"
 show_progress 20 $total_steps "$current_step..."
 unzip -o ./assets/database.zip -d /tmp
-mongorestore --port 3001 --db meteor /tmp/meteor
+mongorestore --port 3001 --db meteor /tmp/meteor/meteor
 
 # Step 21: Set up auto-renewal for Certbot
 current_step="Setting up auto-renewal for Certbot"
