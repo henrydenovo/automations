@@ -77,7 +77,7 @@ if [[ ! -f /etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-8 ]]; then
   sudo curl -o /etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-8 https://dl.fedoraproject.org/pub/epel/RPM-GPG-KEY-EPEL-8
 fi
 sudo yum install -y epel-release
-sudo yum install -y unzip tar g++
+sudo yum install -y unzip tar
 unzip -o ./assets/repos.zip -d /etc/yum.repos.d/
 sudo yum update -y
 
